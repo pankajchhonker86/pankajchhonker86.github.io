@@ -1,0 +1,294 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Portfolio of Pankaj Chhonker, a cybersecurity and software engineering student.">
+<title>Pankaj Chhonker Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>
+/* Layout: single column on a narrow measure, a left rail of mono labels beside content from 860px up.
+   Subject: backend and security engineer. Palette is cool paper and ink, one signal blue. */
+:root {
+  --bg: #eef1f5;
+  --surface: #f9fafc;
+  --fg: #0e1726;
+  --muted: #4a5568;
+  --line: #cfd6e0;
+  --accent: #1f4fe0;
+  --accent-soft: #dfe7fd;
+  --font-display: "Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
+  --font-body: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0b1220; --surface: #121b2e; --fg: #e8edf6; --muted: #a3afc2;
+    --line: #243049; --accent: #8fabff; --accent-soft: #1b2a52; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0b1220; --surface: #121b2e; --fg: #e8edf6; --muted: #a3afc2;
+  --line: #243049; --accent: #8fabff; --accent-soft: #1b2a52; color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.6;
+  margin: 0;
+  padding-block: 0;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+a { color: var(--accent); text-underline-offset: 3px; }
+a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
+.wrap { max-width: 980px; margin: 0 auto; }
+
+/* Header */
+.top { padding-block: 56px 40px; border-bottom: 1px solid var(--line); }
+.eyebrow { font-family: var(--font-mono); font-size: 13px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); margin: 0 0 16px; }
+h1 { font-family: var(--font-display); font-weight: 700; font-size: clamp(2.6rem, 8vw, 4.8rem); line-height: 1; letter-spacing: -0.02em; margin: 0 0 20px; text-wrap: balance; }
+.lede { font-size: clamp(1.1rem, 2.4vw, 1.3rem); max-width: 40em; margin: 0 0 28px; color: var(--fg); }
+.links { display: flex; flex-wrap: wrap; gap: 10px; margin: 0 0 32px; }
+.btn { display: inline-flex; align-items: center; gap: 8px; font: 500 14px/1 var(--font-body); padding: 12px 16px; border: 1px solid var(--fg); border-radius: 6px; color: var(--fg); text-decoration: none; background: transparent; cursor: pointer; }
+.btn.primary { background: var(--fg); color: var(--bg); }
+.btn:hover { border-color: var(--accent); color: var(--accent); }
+.btn.primary:hover { background: var(--accent); color: var(--bg); border-color: var(--accent); }
+.facts { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 0; border: 1px solid var(--line); border-radius: 8px; background: var(--surface); }
+.fact { padding: 16px 18px; border-right: 1px solid var(--line); min-width: 0; }
+.fact:last-child { border-right: 0; }
+.fact b { display: block; font-family: var(--font-display); font-size: 1.9rem; line-height: 1.1; font-weight: 700; font-variant-numeric: tabular-nums; }
+.fact span { font-size: 14px; color: var(--muted); }
+@media (max-width: 620px) { .fact { border-right: 0; border-bottom: 1px solid var(--line); } .fact:last-child { border-bottom: 0; } }
+
+/* Sections */
+section { display: grid; grid-template-columns: 1fr; gap: 20px; padding-block: 44px; border-bottom: 1px solid var(--line); }
+.label { font-family: var(--font-mono); font-size: 13px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--accent); margin: 0; padding-top: 6px; }
+@media (min-width: 860px) { section { grid-template-columns: 190px minmax(0, 1fr); gap: 40px; } .label { position: sticky; top: 24px; align-self: start; } }
+h2 { font-family: var(--font-display); font-size: clamp(1.5rem, 3.4vw, 2rem); line-height: 1.15; margin: 0 0 14px; letter-spacing: -0.01em; text-wrap: balance; }
+h3 { font-family: var(--font-display); font-size: 1.3rem; margin: 0; line-height: 1.2; }
+p { margin: 0 0 14px; }
+.content { min-width: 0; }
+ul.plain { margin: 0; padding-left: 20px; display: grid; gap: 8px; }
+.meta { font-family: var(--font-mono); font-size: 13px; color: var(--muted); }
+
+/* Experience */
+.role { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 6px 20px; margin-bottom: 14px; }
+.role .meta { margin: 0; }
+
+/* Projects */
+.projects { display: grid; gap: 22px; }
+.project { background: var(--surface); border: 1px solid var(--line); border-radius: 8px; padding: 24px; min-width: 0; }
+.project header { margin-bottom: 14px; }
+.stack { display: flex; flex-wrap: wrap; gap: 6px; margin: 10px 0 0; padding: 0; list-style: none; }
+.stack li { font-family: var(--font-mono); font-size: 12px; padding: 3px 8px; border-radius: 4px; background: var(--accent-soft); color: var(--accent); }
+.project .summary { color: var(--muted); margin-bottom: 14px; }
+
+/* Skills */
+.skills { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 24px 32px; margin: 0; }
+.skills dt { font-family: var(--font-mono); font-size: 13px; text-transform: uppercase; letter-spacing: 0.05em; color: var(--muted); margin-bottom: 6px; }
+.skills dd { margin: 0 0 0; }
+
+/* Education and certs */
+.edu { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 6px 20px; }
+.certs { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 12px; margin: 0; padding: 0; list-style: none; }
+.certs li { border: 1px solid var(--line); border-radius: 6px; padding: 12px 14px; background: var(--surface); }
+
+/* Contact */
+.contact-rows { display: grid; gap: 10px; }
+.row { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 14px; }
+.row .k { font-family: var(--font-mono); font-size: 13px; color: var(--muted); width: 84px; }
+.row .v { font-family: var(--font-mono); font-size: 15px; overflow-wrap: anywhere; user-select: all; }
+.copy { font: 500 12px/1 var(--font-body); padding: 6px 10px; border: 1px solid var(--line); border-radius: 4px; background: var(--surface); color: var(--fg); cursor: pointer; }
+.copy:hover { border-color: var(--accent); color: var(--accent); }
+footer { padding-block: 28px 56px; font-size: 14px; color: var(--muted); }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <header class="top">
+    <p class="eyebrow">Backend · Systems · Cybersecurity</p>
+    <h1>Pankaj Chhonker</h1>
+    <p class="lede">Computer science engineering student specializing in cybersecurity and digital forensics. I build backend services and low-level libraries, and I analyze networks for the weak spots.</p>
+    <div class="links">
+      <a class="btn primary" href="https://github.com/pankajchhonker86" target="_blank" rel="noopener">GitHub</a>
+      <a class="btn" href="https://linkedin.com/in/pankaj-c-b97065359" target="_blank" rel="noopener">LinkedIn</a>
+      <a class="btn" href="#contact">Contact</a>
+    </div>
+    <div class="facts">
+      <div class="fact"><b>200+</b><span>algorithmic problems solved</span></div>
+      <div class="fact"><b>5</b><span>enterprise networks analyzed at IBM</span></div>
+      <div class="fact"><b>85%</b><span>unit test coverage, Spring Boot service</span></div>
+      <div class="fact"><b>8.3</b><span>CGPA out of 10 at VIT Bhopal</span></div>
+    </div>
+  </header>
+
+  <section id="about">
+    <p class="label">About</p>
+    <div class="content">
+      <h2>Engineering with security in mind</h2>
+      <p>I am a Computer Science Engineer in training with a foundation in cybersecurity and software engineering. I have built high-performance backend systems and custom libraries that cut execution latency and runtime memory allocation overhead by 40%.</p>
+      <p>I have applied ethical hacking methods and data privacy protocols across 5 enterprise networks, and I have solved more than 200 algorithmic problems with a focus on memory management and time complexity.</p>
+    </div>
+  </section>
+
+  <section id="experience">
+    <p class="label">Experience</p>
+    <div class="content">
+      <div class="role">
+        <div>
+          <h3>Cybersecurity Intern</h3>
+          <div>IBM – Adroit Technologies, Bhopal, MP</div>
+        </div>
+        <p class="meta">Jun 2025 – Aug 2025</p>
+      </div>
+      <ul class="plain">
+        <li>Analyzed traffic across 5 enterprise networks with Wireshark, identified network anomalies, and mitigated 20+ protocol vulnerabilities.</li>
+        <li>Audited 12+ organizational security protocols and data protection policies, applying penetration testing concepts to keep data privacy compliance strict.</li>
+        <li>Wrote detailed vulnerability assessment reports for cross-functional teams, reducing incident mitigation time by 15%.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="projects">
+    <p class="label">Projects</p>
+    <div class="content">
+      <h2>Selected work</h2>
+      <div class="projects">
+
+        <article class="project">
+          <header>
+            <h3>Binance Futures Automated Trading Bot</h3>
+            <ul class="stack"><li>Python</li><li>REST APIs</li><li>Git</li><li>HMAC-SHA256</li></ul>
+          </header>
+          <p class="summary">A modular trading application that places orders on the Binance Futures Testnet through signed API endpoints.</p>
+          <ul class="plain">
+            <li>Executes 500+ Market, Limit, and Stop-Limit orders on the Binance Futures Testnet through HMAC-SHA256 signed endpoints.</li>
+            <li>Separates the API wrapper layer, order manager, and validation engine, with strict pre-flight checks that cut execution errors by 30%.</li>
+            <li>Uses structured file and console logging with fault-tolerant exception handling, reaching 99% uptime across network retries and Binance API error codes.</li>
+          </ul>
+        </article>
+
+        <article class="project">
+          <header>
+            <h3>Custom C++ High-Performance String Library</h3>
+            <ul class="stack"><li>C++</li><li>GCC</li><li>SIMD (AVX2)</li><li>CMake</li></ul>
+          </header>
+          <p class="summary">A string library designed around memory layout and cache behavior.</p>
+          <ul class="plain">
+            <li>Uses Small String Optimization to keep short strings on the stack, reducing heap overhead by 40%.</li>
+            <li>Adds zero-copy string views and AVX2 SIMD vectorization to improve cache efficiency and speed up string manipulation algorithms by 15 ms.</li>
+          </ul>
+        </article>
+
+        <article class="project">
+          <header>
+            <h3>Spring Boot Microservice Backend</h3>
+            <ul class="stack"><li>Java 17</li><li>Spring Boot 3.2</li><li>Maven</li><li>AWS EC2</li><li>JUnit</li><li>Mockito</li></ul>
+          </header>
+          <p class="summary">A modular backend service built on dependency injection and deployed to AWS.</p>
+          <ul class="plain">
+            <li>Deployed across 3 AWS EC2 instances, handling 1,000+ requests daily.</li>
+            <li>Built a custom Aspect-Oriented Programming logging framework with custom annotations that captures execution latency across application layers and improved debugging efficiency by 50%.</li>
+            <li>Reached 85% test coverage with JUnit and Mockito to keep the pipeline reliable.</li>
+          </ul>
+        </article>
+
+        <article class="project">
+          <header>
+            <h3>JVM Custom ClassLoader &amp; Reflection Sandbox</h3>
+            <ul class="stack"><li>Java Reflection API</li><li>Bytecode parsing</li></ul>
+          </header>
+          <p class="summary">A runtime loader that treats incoming bytecode as untrusted until it is verified.</p>
+          <ul class="plain">
+            <li>Parses, verifies, and loads 50+ binary bytecode streams at runtime through a custom Java ClassLoader.</li>
+            <li>Isolates execution environments across classloader hierarchies, improving security and modularity of runtime code execution by 25%.</li>
+          </ul>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <section id="skills">
+    <p class="label">Skills</p>
+    <div class="content">
+      <dl class="skills">
+        <div><dt>Languages</dt><dd>C++, Java, Python, SQL, C, Bash, PowerShell</dd></div>
+        <div><dt>Backend &amp; frameworks</dt><dd>Spring Boot, RESTful APIs, Spring Core, Spring AOP, Maven, JDBC, Hibernate</dd></div>
+        <div><dt>Tools &amp; systems</dt><dd>Git, GitHub, Linux/Unix, Wireshark, MySQL, VS Code, CMake, Postman</dd></div>
+        <div><dt>Core competencies</dt><dd>Data structures and algorithms, system architecture, memory management, security protocols</dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <section id="education">
+    <p class="label">Education</p>
+    <div class="content">
+      <div class="edu">
+        <div>
+          <h3>VIT Bhopal University</h3>
+          <div>B.Tech in Computer Science Engineering (Cybersecurity &amp; Digital Forensics)</div>
+        </div>
+        <p class="meta">Expected May 2027 · CGPA 8.3 / 10</p>
+      </div>
+      <p style="margin-top:14px">Coursework: Data Structures &amp; Algorithms, Object-Oriented Programming, Operating Systems, DBMS, Software Engineering, Computer Networks, Cryptography.</p>
+    </div>
+  </section>
+
+  <section id="credentials">
+    <p class="label">Credentials</p>
+    <div class="content">
+      <ul class="certs">
+        <li>Microsoft Certified: SC-900</li>
+        <li>IBM Certified: CECSAIIN Cybersecurity</li>
+        <li>Google IT Support Professional</li>
+        <li>NPTEL: Java &amp; Blockchain</li>
+      </ul>
+      <p style="margin-top:20px"><b>Adobe University Hackathon.</b> Competed as a VIT student and ranked under 5,000 among all participants.</p>
+    </div>
+  </section>
+
+  <section id="contact">
+    <p class="label">Contact</p>
+    <div class="content">
+      <h2>Open to internships and backend or security roles</h2>
+      <div class="contact-rows">
+        <div class="row"><span class="k">Email</span><span class="v" id="email">pankajchhonker86@gmail.com</span><button class="copy" type="button" data-copy="email">Copy</button></div>
+        <div class="row"><span class="k">Phone</span><span class="v" id="phone">+91 7017805812</span><button class="copy" type="button" data-copy="phone">Copy</button></div>
+        <div class="row"><span class="k">Location</span><span class="v">Bhopal, MP, India</span></div>
+        <div class="row"><span class="k">GitHub</span><a class="v" href="https://github.com/pankajchhonker86" target="_blank" rel="noopener">github.com/pankajchhonker86</a></div>
+        <div class="row"><span class="k">LinkedIn</span><a class="v" href="https://linkedin.com/in/pankaj-c-b97065359" target="_blank" rel="noopener">linkedin.com/in/pankaj-c-b97065359</a></div>
+      </div>
+    </div>
+  </section>
+
+  <footer>Pankaj Chhonker · Bhopal, India</footer>
+</div>
+
+<script>
+document.querySelectorAll('.copy').forEach(function (btn) {
+  btn.addEventListener('click', function () {
+    var node = document.getElementById(btn.getAttribute('data-copy'));
+    var text = node.textContent.trim();
+    var done = function () { btn.textContent = 'Copied'; setTimeout(function () { btn.textContent = 'Copy'; }, 1500); };
+    var fallback = function () {
+      var r = document.createRange(); r.selectNodeContents(node);
+      var s = window.getSelection(); s.removeAllRanges(); s.addRange(r);
+      btn.textContent = 'Selected'; setTimeout(function () { btn.textContent = 'Copy'; }, 1500);
+    };
+    try {
+      navigator.clipboard.writeText(text).then(done, fallback);
+    } catch (e) { fallback(); }
+  });
+});
+</script>
+</body>
+</html>
